@@ -52,7 +52,7 @@ Next is to graph songs released, a histogram was used. With x axis as the songs 
   plt.title("Amount Of Songs Released Per Year")
   plt.show()
 ```
-In the graph generated, we can see that around 2020 there was a boom in amount of songs released.
+In the graph generated, we can see that around 2020 there was a boom in amount of songs released.<br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/YearXSongs.png?raw=true)
 
 Next we graph the amount of songs that are realesed by a certain number of artists
@@ -65,7 +65,7 @@ Next we graph the amount of songs that are realesed by a certain number of artis
   plt.title("Amount Of Artists per Song")
   plt.show()
 ```
-We see that majority of songs are made by 1 to 3 artist while any more are more rarer.
+We see that majority of songs are made by 1 to 3 artist while any more are more rarer.<br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/ArtistsXSongs.png?raw=true)
 
 We then find the top streamed songs, using first the , .sort_values() functions then using .head() to display the first 5 rows
@@ -96,7 +96,7 @@ To see if the month has an effect of amount of songs that are released, we use t
   plt.title("Number of Songs Released on a Specific Month")
   plt.show()
 ```
-We see that the month of january and may have more song released compared to other months
+We see that the month of january and may have more song released compared to other months<br>
 
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/MonthXSongs.png?raw=true)
 
@@ -114,7 +114,7 @@ To look for which musical attribute has the highest correlation, we use subplots
   #turn off the last plot since we only need 5
   ax[1,2].axis('off')
 ```
-Looking at the graphs both acousitcness and energy influences the amount of streams a song receives with lower acousticness having more streams and higher energy having more streams 
+Looking at the graphs both acousitcness and energy influences the amount of streams a song receives with lower acousticness having more streams and higher energy having more streams <br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/MusicStatsXStreams.png?raw=true)
 
 For the correlation between Energy and danceability to streams, we use both a scatter plot and heat map. The plot showing Enervgy vs Danceavbility and the heat map showing the amount of streams. We also creat a color bar to be able to read the heat map.
@@ -130,10 +130,40 @@ For the correlation between Energy and danceability to streams, we use both a sc
   plt.xlabel('Danceability (%)')
   plt.ylabel('Energy (%)')
 ```
-From the graph we can see that higher energy songs with 60% to 80% danceability receives more streams
+From the graph we can see that higher energy songs with 60% to 80% danceability receives more streams <br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/EDS.png?raw=true)
 
 Repeating the same step but with different variables, we can see that really low acousticness % songs with around 50% valence receives more streams <br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/VAS.png?raw=true)
 
+Using the same method as the comparison of musical attributes to streams, we can compare the amount popular songs are in playlists of different apps. For spotify and apple, both have more popular songs in a lof of their playlists while deezer has lesser popular songs in more of their playlists.<br>
+![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/PlaylistsXStreams.png?raw=true)
 
+Next is to compare the average number of streams a major or a minor key song receives. Using the .loc() function to find the required modes and getting their mean, we then graph them.
+
+``` python
+  Majorcount = SP.loc[SP['mode']=='Major','streams'].mean()
+  Minorcount = SP.loc[SP['mode']=='Minor','streams'].mean()
+
+  plt.figure(figsize=(2, 3))
+  plt.bar(['Major','Minor'],[Majorcount,Minorcount])
+  plt.ylabel('Streams')
+  plt.title('Major VS Minor Streams')
+```
+From the graph we can see that songs in a Major key have slightly more streams than songs in minor keys.<br>
+![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/Mvm.png?raw=true)
+
+Lastly to see how many times an artist appear in a playlist, we first group them by their artist names using .groupby(), then use .sum() to sum up all of the playlists the artist appear in spotify for now, next is to reset the index then sort their values by how many spotify playlist they are in. After that repeat it again for apple playlists, then merge the two data frames together. and lastly create a new column totaling the two other columns together.
+
+``` python
+  ASCC = SP.groupby('artist(s)_name')['in_spotify_charts'].sum().reset_index().sort_values(by='in_spotify_charts', ascending=False)
+  AACC = SP.groupby('artist(s)_name')['in_apple_charts'].sum().reset_index().sort_values(by='in_apple_charts', ascending=False)
+  AAC = pd.merge(ASCC,AACC,on='artist(s)_name')
+  AAC['total_charts']=AAC['in_spotify_charts']+AAC['in_apple_charts']
+```
+
+AFter all that we get this result <br>
+![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/APC.png?raw=true)
+
+Repeat again for chart results <br>
+![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/ACC.png?raw=true)
