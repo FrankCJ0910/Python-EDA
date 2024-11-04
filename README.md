@@ -39,7 +39,7 @@ This gave out an error where it is said that the column of streams is not in num
 ``` python
   SP['streams']=pd.to_numeric(SP['streams'],errors='coerce')
 ```
-This gives us the following values
+This gives us the following values <br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/STATS.png?raw=true)
 
 Next is to graph songs released, a histogram was used. With x axis as the songs released and an interval of 30
