@@ -74,7 +74,7 @@ We then find the top streamed songs, using first the , .sort_values() functions 
   SP.sort_values(by='streams', ascending=False).head()[['track_name', 'streams']]
 ```
 
-We get these results
+We get these results <br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/TopStreams.png?raw=true)
 
 Next is to get top 5 occuring artists, where we use .value_counts() to count how many times an artist appears in the datasheet, then use .head() to display the first 5 values 
@@ -83,7 +83,7 @@ Next is to get top 5 occuring artists, where we use .value_counts() to count how
   SP['artist(s)_name'].value_counts().head()
 ```
 
-We achieve this result
+We achieve this result <br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/TopArtists.png?raw=true)
 
 To see if the month has an effect of amount of songs that are released, we use the same way we graph the amount of songs of released per year
