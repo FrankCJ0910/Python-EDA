@@ -133,7 +133,7 @@ For the correlation between Energy and danceability to streams, we use both a sc
 From the graph we can see that higher energy songs with 60% to 80% danceability receives more streams
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/EDS.png?raw=true)
 
-Repeating the same step but with different variables, we can see that really low acousticness % songs with around 50% valence receives more streams
+Repeating the same step but with different variables, we can see that really low acousticness % songs with around 50% valence receives more streams <br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/VAS.png?raw=true)
 
 
