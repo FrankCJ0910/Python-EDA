@@ -49,3 +49,9 @@ To graph songs released, a histogram was used. With x axis as the songs released
   plt.hist(SP['released_year'],bins=30)
   plt.show()
 ```
+
+![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/YearXSongs.png?raw=true)
+
+
+
+
