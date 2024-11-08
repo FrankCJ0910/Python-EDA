@@ -1,3 +1,4 @@
+This program aims to explore and analyze a spotify's data from 2023. <br>
 Since this task is all about analyzing a data sheet, both pandas and matplotlib libraries are imported.
 
 ``` python
