@@ -162,7 +162,7 @@ Lastly to see how many times an artist appear in a playlist, we first group them
   AAC['total_charts']=AAC['in_spotify_charts']+AAC['in_apple_charts']
 ```
 
-AFter all that we get this result <br>
+After all that we get this result <br>
 ![alt text](https://github.com/FrankCJ0910/Python-EDA/blob/main/Images/APC.png?raw=true)
 
 Repeat again for chart results <br>
